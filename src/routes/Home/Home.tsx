@@ -7,7 +7,7 @@ import RecommendAward from './RecommendAwards/RecommendAward';
 const Home = () => {
   return (
     <div className={styles.home}>
-      <SEO title='홈' />
+      <SEO title='KPA Pedia - 홈' />
       <RecommendPerformance />
       <RecommendFestival />
       <RecommendAward />

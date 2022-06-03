@@ -6,6 +6,7 @@ import LoginModal from 'components/Modal/LoginModal/LoginModal';
 import ModalPortal from 'components/Modal/ModalPortal';
 import { userId } from 'states/atom';
 import { LoginLogo } from 'assets/svg';
+import SEO from 'components/SEO/SEO';
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({ id: '', pw: '' });
@@ -41,6 +42,7 @@ const Login = () => {
 
   return (
     <div className={styles.login}>
+      <SEO title='KPA Pedia - 로그인' />
       <div className={styles.container}>
         <LoginLogo className={styles.loginLogo} />
         <div className={styles.inputWrap}>

@@ -89,7 +89,7 @@ const Performance = () => {
 
   return (
     <div className={styles.performance}>
-      <SEO title='공연검색' />
+      <SEO title='KPA Pedia - 공연검색' />
       <SearchTitle HandleInputValue={HandleInputValue} isLoading={isLoading} />
       {fillterItemList}
       {isLoad && <Spinner top={150} bottom={80} />}
