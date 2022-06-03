@@ -7,6 +7,7 @@ import Spinner from 'components/Spinner/Spinner';
 import ItemList from 'components/ItemList/ItemList';
 import SearchTitle from 'components/Search/SearchTitle/SearchTitle';
 import SearchNoResult from 'components/Search/SearchNoResult/SearchNoResult';
+import SearchInput from 'components/Search/SearchInput/SearchInput';
 
 import { useRecoilState } from 'recoil';
 import { requestNumber } from 'states/atom';
@@ -95,7 +96,8 @@ const Festival = () => {
   return (
     <section className={styles.festival}>
       <SEO title='KPA Pedia - 축제목록' />
-      <SearchTitle HandleInputValue={HandleInputValue} isLoading={isLoading} />
+      <SearchTitle mainTitle={PARAMS_TITLE.mainTitle} subTitle={PARAMS_TITLE.subTitle} />
+      <SearchInput placeholder={PARAMS_TITLE.placeholder} HandleInputValue={HandleInputValue} isLoading={isLoading} />
       {fillterItemList}
       {isLoad && <Spinner top={150} bottom={80} />}
       {ActiveLogin && <div ref={ref} className={styles.infiniteScrollDiv} />}
@@ -104,3 +106,9 @@ const Festival = () => {
 };
 
 export default Festival;
+
+const PARAMS_TITLE = {
+  mainTitle: '원하시는 축제를 검색해보세요!',
+  subTitle: `관람을 원하시거나 관심있는 축제를 검색해보세요. 최신 축제에 관한 모든 정보를 확인해보실 수 있습니다.`,
+  placeholder: '축제명을 입력해주세요.',
+};
