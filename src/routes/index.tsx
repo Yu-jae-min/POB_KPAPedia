@@ -7,7 +7,7 @@ import Performance from './Performance/Performance';
 import Festival from './Festival/Festival';
 import Award from './Awards/Awards';
 import Ticketing from './Ticketing/Ticketing';
-import Detail from './Detail/Detail';
+import Detail from '../components/Detail/Detail';
 
 const App = () => {
   return (
@@ -16,9 +16,7 @@ const App = () => {
       <Route element={<Layout />}>
         <Route path='/' element={<Home />} />
         <Route path='performance' element={<Performance />} />
-
         <Route path='festival' element={<Festival />} />
-
         <Route path='award' element={<Award />} />
         <Route path='/:detail' element={<Detail />} />
         <Route path='ticketing' element={<Ticketing />} />

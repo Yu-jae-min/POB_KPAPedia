@@ -40,12 +40,12 @@ const NAV_LIST = [
   },
   {
     key: 2,
-    title: '공연검색',
+    title: '공연목록',
     path: 'performance',
   },
   {
     key: 3,
-    title: '축제검색',
+    title: '축제목록',
     path: 'festival',
   },
   {

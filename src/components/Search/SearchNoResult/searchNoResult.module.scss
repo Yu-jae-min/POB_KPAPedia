@@ -1,0 +1,19 @@
+@use '/src/styles/constants/colors';
+
+.noResultWrap {
+  flex-direction: column;
+  height: 500px;
+
+  .noResultTitle {
+    font-size: 30px;
+    font-weight: bold;
+    color: colors.$PRIMARY;
+  }
+
+  .noResultSubTitle {
+    margin-left: 14px;
+    font-size: 18px;
+    line-height: 25px;
+    color: colors.$GRAY800;
+  }
+}
