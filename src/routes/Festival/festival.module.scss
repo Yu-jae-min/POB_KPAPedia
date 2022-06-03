@@ -1,0 +1,10 @@
+@use '/src/styles/constants/colors';
+
+.festival {
+  background: colors.$BACKGROUND;
+
+  .infiniteScrollDiv {
+    position: relative;
+    bottom: -300px;
+  }
+}

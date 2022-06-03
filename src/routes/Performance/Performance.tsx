@@ -1,17 +1,22 @@
-import SEO from 'components/SEO/SEO';
-import useApiDataType from 'hooks/useApiDataType';
-import styles from './performance.module.scss';
-import { useQuery } from 'react-query';
-import { getPerformanceListApi } from 'services/api';
 import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useQuery } from 'react-query';
 import { useInView } from 'react-intersection-observer';
-import { useRecoilState } from 'recoil';
-import { requestNumber } from 'states/atom';
+
+import SEO from 'components/SEO/SEO';
 import Spinner from 'components/Spinner/Spinner';
-import useDebounce from 'hooks/useDebounce';
 import ItemList from 'components/ItemList/ItemList';
 import SearchTitle from 'components/Search/SearchTitle/SearchTitle';
 import SearchNoResult from 'components/Search/SearchNoResult/SearchNoResult';
+
+import { useRecoilState } from 'recoil';
+import { requestNumber } from 'states/atom';
+
+import { getPerformanceListApi } from 'services/api';
+
+import useApiDataType from 'hooks/useApiDataType';
+import useDebounce from 'hooks/useDebounce';
+
+import styles from './performance.module.scss';
 
 const Performance = () => {
   const [itemList, setItemList] = useState();
@@ -88,13 +93,13 @@ const Performance = () => {
   const ActiveLogin = !inputValue && defaultItemList.length !== 0;
 
   return (
-    <div className={styles.performance}>
+    <section className={styles.performance}>
       <SEO title='KPA Pedia - 공연검색' />
       <SearchTitle HandleInputValue={HandleInputValue} isLoading={isLoading} />
       {fillterItemList}
       {isLoad && <Spinner top={150} bottom={80} />}
       {ActiveLogin && <div ref={ref} className={styles.infiniteScrollDiv} />}
-    </div>
+    </section>
   );
 };
 

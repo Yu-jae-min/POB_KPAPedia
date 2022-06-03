@@ -41,7 +41,7 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.login}>
+    <section className={styles.login}>
       <SEO title='KPA Pedia - 로그인' />
       <div className={styles.container}>
         <LoginLogo className={styles.loginLogo} />
@@ -82,7 +82,7 @@ const Login = () => {
           </ModalPortal>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

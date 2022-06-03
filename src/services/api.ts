@@ -3,7 +3,9 @@ import dayjs from 'dayjs';
 import { IListApiParams } from 'types/type';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+
 const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
 const BASE_URL = 'openApi/restful';
 const PERFORMANCE_BASE_URL = `${BASE_URL}/pblprfr`;
 const FESTIVAL_BASE_URL = `${BASE_URL}/prffest`;

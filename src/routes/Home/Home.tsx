@@ -6,12 +6,12 @@ import RecommendAward from './RecommendAwards/RecommendAward';
 
 const Home = () => {
   return (
-    <div className={styles.home}>
+    <section className={styles.home}>
       <SEO title='KPA Pedia - 홈' />
       <RecommendPerformance />
       <RecommendFestival />
       <RecommendAward />
-    </div>
+    </section>
   );
 };
 

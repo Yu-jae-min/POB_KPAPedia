@@ -1,0 +1,10 @@
+@use '/src/styles/constants/colors';
+
+.awards {
+  background: colors.$BACKGROUND;
+
+  .infiniteScrollDiv {
+    position: relative;
+    bottom: -300px;
+  }
+}
