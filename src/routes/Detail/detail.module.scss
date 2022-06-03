@@ -1,0 +1,122 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.contentWrap {
+  display: flex;
+  justify-content: space-between;
+
+  .poster {
+    width: 450px;
+    height: 550px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+  }
+
+  .descWrap {
+    width: 100%;
+    padding: 20px 0 20px 70px;
+
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .descListWrap {
+      padding-top: 50px;
+      margin-top: 30px;
+      border-top: 1px solid colors.$GRAY100;
+
+      .descList {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+
+        .descListTitle {
+          padding: 10px 20px;
+          margin-right: 20px;
+          font-weight: bold;
+          color: colors.$WHITE;
+          background-color: colors.$BLACK;
+          border-radius: 7px;
+        }
+      }
+
+      .descList:first-child {
+        margin: 0;
+      }
+    }
+
+    .genrenm,
+    .prfage {
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: bold;
+      color: colors.$WHITE;
+      background-color: colors.$BLACK;
+      border-radius: 5px;
+    }
+
+    .prfage {
+      margin-left: 10px;
+      background-color: colors.$GRAY300;
+    }
+
+    .prfnm {
+      margin-top: 30px;
+      font-size: 40px;
+      font-weight: bold;
+    }
+  }
+}
+
+.performanceMannerWrap {
+  margin-top: 50px;
+  border-top: 1px solid colors.$GRAY100;
+
+  .beforeWrap,
+  .afterWrap {
+    .mainTitle {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 50px 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: colors.$WHITE;
+      background-color: colors.$BLACK;
+      border-radius: 10px;
+    }
+
+    .listWrap {
+      margin-top: 35px;
+    }
+
+    .listWrap:first-child {
+      margin: 0;
+    }
+
+    .descIndex {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      margin-right: 7px;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 25px;
+      color: colors.$WHITE;
+      text-align: center;
+      background-color: colors.$BLACK;
+      border-radius: 3px;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .desc {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  }
+}

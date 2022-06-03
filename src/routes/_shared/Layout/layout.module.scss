@@ -1,0 +1,17 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/constants/levels';
+
+.layout {
+  height: 100vh;
+
+  .main {
+    display: flex;
+    justify-content: center;
+    min-height: 880px;
+    padding: 96px 0;
+
+    .content {
+      width: 1320px;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@use '/src/styles/constants/colors';
+@use 'src/styles/mixins/flexbox';
+
+.navList {
+  display: flex;
+
+  li {
+    margin-right: 30px;
+
+    a {
+      all: unset;
+      font-size: 16px;
+      color: colors.$BLACK;
+      cursor: pointer;
+    }
+
+    .isActive {
+      position: relative;
+      font-weight: 600;
+      color: colors.$PRIMARY;
+    }
+  }
+}

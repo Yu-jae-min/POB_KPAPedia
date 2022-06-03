@@ -1,0 +1,64 @@
+@use '/src/styles/constants/colors';
+
+.title {
+  margin-bottom: 14px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.itemListWrap {
+  display: flex;
+  justify-content: space-between;
+
+  .itemList {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+
+    .detailBtn {
+      text-align: left;
+    }
+
+    .poster {
+      width: 250px;
+      height: 350px;
+      object-fit: cover;
+      object-position: center;
+      border: 1px solid colors.$GRAY100;
+      border-radius: 5px;
+    }
+
+    .genrenm {
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      padding: 7px 15px;
+      font-size: 14px;
+      font-weight: bold;
+      color: colors.$WHITE;
+      background-color: colors.$BLACK;
+      border-radius: 5px;
+    }
+
+    .itemTitle {
+      margin-top: 10px;
+      overflow: hidden;
+      font-size: 18px;
+      color: colors.$BLACK;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .period {
+      margin: 7px 0 14px;
+      font-size: 14px;
+      color: colors.$GRAY800;
+    }
+
+    .host {
+      font-size: 13px;
+      color: colors.$GRAY300;
+    }
+  }
+}
