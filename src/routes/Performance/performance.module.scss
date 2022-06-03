@@ -23,34 +23,16 @@
       height: 50px;
     }
 
-    .searchFoam {
-      display: flex;
+    .searchInput {
+      width: 50%;
+      padding: 0 20px;
       margin-top: 20px;
+      font-size: 18px;
+      border: 1px solid colors.$GRAY100;
+      border-radius: 5px;
 
-      .searchInput {
-        width: 50%;
-        padding: 0 20px;
-        font-size: 18px;
-        border: 1px solid colors.$GRAY100;
-        border-right: 0;
-        border-radius: 5px 0 0 5px;
-
-        &::placeholder {
-          color: colors.$GRAY100;
-        }
-      }
-
-      .searchBtn {
-        padding: 10px 30px;
-        font-size: 16px;
-        color: colors.$WHITE;
-        background-color: colors.$GRAY100;
-        border-radius: 0 5px 5px 0;
-
-        &:hover {
-          background-color: colors.$PRIMARY;
-          transition: all 0.8s;
-        }
+      &::placeholder {
+        color: colors.$GRAY100;
       }
     }
   }
@@ -117,6 +99,6 @@
 
   .infiniteScrollDiv {
     position: relative;
-    bottom: -150px;
+    bottom: -300px;
   }
 }

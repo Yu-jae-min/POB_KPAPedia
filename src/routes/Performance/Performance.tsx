@@ -9,19 +9,49 @@ import { useInView } from 'react-intersection-observer';
 import { useRecoilState } from 'recoil';
 import { requestNumber } from 'states/atom';
 import Spinner from 'components/Spinner/Spinner';
+import useDebounce from 'hooks/useDebounce';
 
 const Performance = () => {
   const [itemList, setItemList] = useState();
-  const [filterList, setFilterList] = useState();
-  const [inputValue, setInputValue] = useState<string>();
+  const [filterItemList, setFilterItemList] = useState<any>();
+  const [inputValue, setInputValue] = useState<string>('');
   const [request, setRequest] = useRecoilState(requestNumber);
   const [isLoad, setIsLoad] = useState<boolean>(false);
   const [ref, inView] = useInView();
+  const debouncedValue = useDebounce(inputValue, 300);
 
   const navigate = useNavigate();
   const { handleXmlChange } = useApiDataType();
 
-  const { data, isLoading, isError } = useQuery(
+  const getMovieList = useCallback(async () => {
+    setIsLoad(true);
+
+    await getPerformanceListApi({ cpage: '1', rows: String(request) })
+      .then((res) => res.data)
+      .then((xml) => setItemList(handleXmlChange(xml)));
+
+    setIsLoad(false);
+  }, [request]);
+
+  const defaultItemList = itemList ?? [];
+
+  const goToDetail = (mt20id: string) => {
+    navigate(`/${mt20id}`);
+  };
+
+  useEffect(() => {
+    getMovieList();
+  }, [request]);
+
+  useEffect(() => {
+    if (!inView) return;
+
+    if (inView) {
+      setRequest((prev) => prev + 5);
+    }
+  }, [inView]);
+
+  const { data, isLoading } = useQuery(
     ['getPerformanceDetailListApi'],
     () =>
       getPerformanceListApi({ cpage: '1', rows: '99' })
@@ -34,55 +64,43 @@ const Performance = () => {
     }
   );
 
-  const getMovieList = useCallback(async () => {
-    setIsLoad(true);
-
-    await getPerformanceListApi({ cpage: '1', rows: String(request) })
-      .then((res) => res.data)
-      .then((xml) => setItemList(handleXmlChange(xml)));
-
-    setIsLoad(false);
-  }, [request, setItemList, handleXmlChange]);
-
-  const dataCheck = itemList ?? [];
-
-  const goToDetail = (mt20id: string) => {
-    navigate(`/${mt20id}`);
-  };
-
-  const getSearchList = () => {
-    alert('하이');
+  const HandleInputValue = (event: any) => {
+    const { value } = event.currentTarget;
+    setInputValue(value);
   };
 
   useEffect(() => {
-    getMovieList();
-  }, [request, getMovieList]);
+    const filterData = data ?? [];
+    const searchList = filterData.filter(({ prfnm }: any) => prfnm.includes(debouncedValue));
 
-  useEffect(() => {
-    if (inView) {
-      setRequest((prev) => prev + 5);
-    }
-  }, [inView, setRequest]);
+    setFilterItemList(searchList);
+  }, [debouncedValue]);
+
+  const itemListState = filterItemList?.length > 0 ? filterItemList : defaultItemList;
 
   return (
     <div className={styles.performance}>
       <SEO title='공연검색' />
       <div className={styles.titleWrap}>
-        <h1 className={styles.title}>원하시는 공연을 검색해보세요!</h1>
-        <span className={styles.subTitle}>
-          관람을 원하시거나 관심있는 공연을 검색해보세요.
-          <br />
-          최신 공연에 관한 모든 공연 정보를 확인해보실 수 있습니다.
-        </span>
-        <form onSubmit={getSearchList} className={styles.searchFoam}>
-          <input type='text' className={styles.searchInput} placeholder='공연명을 입력해주세요.' maxLength={30} />
-          <button type='submit' className={styles.searchBtn}>
-            검색
-          </button>
-        </form>
+        <div>
+          <h1 className={styles.title}>원하시는 공연을 검색해보세요!</h1>
+          <span className={styles.subTitle}>
+            관람을 원하시거나 관심있는 공연을 검색해보세요.
+            <br />
+            최신 공연에 관한 모든 공연 정보를 확인해보실 수 있습니다.
+          </span>
+        </div>
+        <input
+          type='text'
+          className={styles.searchInput}
+          placeholder='공연명을 입력해주세요.'
+          maxLength={30}
+          onChange={HandleInputValue}
+          disabled={isLoading}
+        />
       </div>
       <ul className={styles.itemListWrap}>
-        {dataCheck.map((item: any) => {
+        {itemListState.map((item: any) => {
           const { mt20id, fcltynm, poster, genrenm, prfnm, prfpdfrom, prfpdto } = item;
           const key = `${prfnm}+${fcltynm}`;
 
@@ -104,7 +122,7 @@ const Performance = () => {
         })}
       </ul>
       {isLoad && <Spinner top={150} bottom={80} />}
-      {dataCheck.length !== 0 && <div ref={ref} className={styles.infiniteScrollDiv} />}
+      {!inputValue && defaultItemList.length !== 0 && <div ref={ref} className={styles.infiniteScrollDiv} />}
     </div>
   );
 };
