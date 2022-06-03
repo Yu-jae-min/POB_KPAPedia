@@ -1,6 +1,6 @@
 import SEO from 'components/SEO/SEO';
 
-const Ticketing = () => {
+const BoxOffice = () => {
   return (
     <div>
       <SEO title='KPA Pedia - 예매현황' />
@@ -9,4 +9,4 @@ const Ticketing = () => {
   );
 };
 
-export default Ticketing;
+export default BoxOffice;

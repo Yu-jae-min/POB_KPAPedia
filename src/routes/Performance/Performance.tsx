@@ -74,7 +74,9 @@ const Performance = () => {
 
   useEffect(() => {
     const filterData = data ?? [];
-    const searchList = filterData.filter(({ prfnm }: any) => prfnm.includes(debouncedValue));
+    const searchList = filterData.filter(({ prfnm }: any) =>
+      prfnm.toLowerCase().includes(debouncedValue.toLowerCase())
+    );
 
     setFilterItemList(searchList);
   }, [debouncedValue, data]);

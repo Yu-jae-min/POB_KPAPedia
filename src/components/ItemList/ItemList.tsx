@@ -17,7 +17,9 @@ const ItemList = ({ itemArray }: any) => {
         return (
           <li key={key} className={styles.itemList}>
             <button type='button' onClick={() => goToDetail(mt20id)} className={styles.detailBtn}>
-              <img className={styles.poster} src={poster} alt={fcltynm} />
+              <div className={styles.imgWrap}>
+                <img className={styles.poster} src={poster} alt={fcltynm} />
+              </div>
               <div className={styles.descWrap}>
                 <p className={styles.itemTitle}>{prfnm}</p>
                 <p className={styles.period}>

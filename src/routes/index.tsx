@@ -6,7 +6,7 @@ import Home from './Home/Home';
 import Performance from './Performance/Performance';
 import Festival from './Festival/Festival';
 import Award from './Awards/Awards';
-import Ticketing from './Ticketing/Ticketing';
+import BoxOffice from './BoxOffice/BoxOffice';
 import Detail from '../components/Detail/Detail';
 
 const App = () => {
@@ -15,11 +15,11 @@ const App = () => {
       <Route path='login' element={<Login />} />
       <Route element={<Layout />}>
         <Route path='/' element={<Home />} />
+        <Route path='boxOffice' element={<BoxOffice />} />
         <Route path='performance' element={<Performance />} />
         <Route path='festival' element={<Festival />} />
         <Route path='award' element={<Award />} />
         <Route path='/:detail' element={<Detail />} />
-        <Route path='ticketing' element={<Ticketing />} />
       </Route>
       <Route path='*' element={<div>잘못 된 접근입니다.</div>} />
     </Routes>

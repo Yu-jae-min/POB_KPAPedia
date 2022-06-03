@@ -40,22 +40,22 @@ const NAV_LIST = [
   },
   {
     key: 2,
+    title: '예매현황',
+    path: 'boxOffice',
+  },
+  {
+    key: 3,
     title: '공연목록',
     path: 'performance',
   },
   {
-    key: 3,
+    key: 4,
     title: '축제목록',
     path: 'festival',
   },
   {
-    key: 4,
+    key: 5,
     title: '수상작',
     path: 'award',
-  },
-  {
-    key: 5,
-    title: '예매현황',
-    path: 'ticketing',
   },
 ];
