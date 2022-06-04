@@ -14,7 +14,7 @@ interface ILoginInputType {
   handleUserInfo: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const LoginInput = ({ userInfo, handleUserInfo, validationId, validationPw }: ILoginInputType) => {
+const LoginInput = ({ userInfo, validationId, validationPw, handleUserInfo }: ILoginInputType) => {
   const { id, pw } = userInfo;
 
   const idFoam = Boolean(id.length && !id.match(validationId));

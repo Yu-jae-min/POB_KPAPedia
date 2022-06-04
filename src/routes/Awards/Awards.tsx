@@ -19,7 +19,7 @@ import { getAwardListApi } from 'services/api';
 
 import { IAwardsListType } from 'types/types';
 
-import { NO_RESULT, AWARDS_PARAMS_TITLE } from 'models/models';
+import { NO_RESULT, REQUEST_ERROR, AWARDS_PARAMS_TITLE } from 'models/models';
 
 import styles from './awards.module.scss';
 
@@ -32,16 +32,19 @@ const Awards = () => {
   const [filterItemList, setFilterItemList] = useState<IAwardsListType[]>();
   const [inputValue, setInputValue] = useState<string>('');
   const [request, setRequest] = useRecoilState(requestNumber);
+  const [isError, setIsError] = useState<string>(NO_RESULT);
   const [isLoad, setIsLoad] = useState<boolean>(false);
   const [ref, inView] = useInView();
   const debouncedValue = useDebounce(inputValue, 300);
 
   const getMovieList = useCallback(async () => {
+    setIsError(NO_RESULT);
     setIsLoad(true);
 
     await getAwardListApi({ cpage: '1', rows: String(request) })
       .then((res) => res.data)
-      .then((xml) => setItemList(handleXmlChange(xml)));
+      .then((xml) => setItemList(handleXmlChange(xml)))
+      .catch(() => setIsError(REQUEST_ERROR));
 
     setIsLoad(false);
   }, [request]);
@@ -96,8 +99,12 @@ const Awards = () => {
       return <Error desc={NO_RESULT} />;
     }
 
+    if (!isLoad && !filterItemList?.length) {
+      return <Error desc={isError} />;
+    }
+
     return <ItemList itemArray={itemList ?? []} />;
-  }, [debouncedValue, filterItemList, itemList]);
+  }, [debouncedValue, filterItemList, isError, itemList, isLoad]);
 
   const ActiveLogin = !inputValue && defaultItemList.length !== 0;
 

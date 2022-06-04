@@ -4,12 +4,13 @@ import SEO from 'components/SEO/SEO';
 import Spinner from 'components/Spinner/Spinner';
 import BoxOfficeItemList from './BoxOfficeItemList/BoxOfficeItemList';
 import BoxOfficeTable from './BoxOfficeTable/BoxOfficeTable';
+import Error from 'components/Error/Error';
 
 import { boxOfficeXmlChange } from 'hooks/useApiDataType';
 
 import { getBoxOfficeListApi } from 'services/api';
 
-import { BOXOFFICE_PARAMS_TITLE } from 'models/models';
+import { BOXOFFICE_PARAMS_TITLE, REQUEST_ERROR } from 'models/models';
 
 import styles from './boxOffice.module.scss';
 
@@ -18,7 +19,7 @@ interface IRumType {
 }
 
 const BoxOffice = () => {
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     ['getBoxOfficeListApi'],
     () =>
       getBoxOfficeListApi()
@@ -44,6 +45,7 @@ const BoxOffice = () => {
           <span className={styles.subTitle}>{BOXOFFICE_PARAMS_TITLE.subTitle}</span>
         </div>
       </div>
+      {isError && <Error desc={REQUEST_ERROR} />}
       {isLoading && <Spinner top={250} bottom={250} />}
       <BoxOfficeItemList itemArray={thumbnailMainData} />
       <BoxOfficeItemList itemArray={thumbnailSubData} />

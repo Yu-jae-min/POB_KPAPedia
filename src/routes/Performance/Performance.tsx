@@ -19,7 +19,7 @@ import { getPerformanceListApi } from 'services/api';
 
 import { IPerformenceListType } from 'types/types';
 
-import { NO_RESULT, PERFORMANCE_PARAMS_TITLE } from 'models/models';
+import { NO_RESULT, REQUEST_ERROR, PERFORMANCE_PARAMS_TITLE } from 'models/models';
 
 import styles from './performance.module.scss';
 
@@ -32,16 +32,19 @@ const Performance = () => {
   const [filterItemList, setFilterItemList] = useState<IPerformenceListType[]>();
   const [inputValue, setInputValue] = useState<string>('');
   const [request, setRequest] = useRecoilState(requestNumber);
+  const [isError, setIsError] = useState<string>(NO_RESULT);
   const [isLoad, setIsLoad] = useState<boolean>(false);
   const [ref, inView] = useInView();
   const debouncedValue = useDebounce(inputValue, 300);
 
   const getMovieList = useCallback(async () => {
+    setIsError(NO_RESULT);
     setIsLoad(true);
 
     await getPerformanceListApi({ cpage: '1', rows: String(request) })
       .then((res) => res.data)
-      .then((xml) => setItemList(handleXmlChange(xml)));
+      .then((xml) => setItemList(handleXmlChange(xml)))
+      .catch(() => setIsError(REQUEST_ERROR));
 
     setIsLoad(false);
   }, [request]);
@@ -81,7 +84,7 @@ const Performance = () => {
   useEffect(() => {
     const filterData = data ?? [];
     const searchList = filterData.filter(({ prfnm }: IPrfnmType) =>
-      prfnm.toLowerCase().includes(debouncedValue.toLowerCase())
+      prfnm?.toLowerCase().includes(debouncedValue.toLowerCase())
     );
 
     setFilterItemList(searchList);
@@ -96,8 +99,12 @@ const Performance = () => {
       return <Error desc={NO_RESULT} />;
     }
 
+    if (!isLoad && !filterItemList?.length) {
+      return <Error desc={isError} />;
+    }
+
     return <ItemList itemArray={itemList ?? []} />;
-  }, [debouncedValue, filterItemList, itemList]);
+  }, [debouncedValue, filterItemList, isError, itemList, isLoad]);
 
   const ActiveLogin = !inputValue && defaultItemList.length !== 0;
 

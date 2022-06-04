@@ -1,6 +1,5 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
-
 import { IListApiParams } from 'types/types';
 
 const API_KEY = process.env.REACT_APP_API_KEY;

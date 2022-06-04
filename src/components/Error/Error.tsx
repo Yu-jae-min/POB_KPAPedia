@@ -6,9 +6,9 @@ interface IErrorParams {
 
 const Error = ({ desc }: IErrorParams) => {
   return (
-    <div className={styles.noResultWrap}>
-      <span className={styles.noResultTitle}>Error !</span>
-      <span className={styles.noResultSubTitle}>{desc}</span>
+    <div className={styles.errorWrap}>
+      <span className={styles.errorTitle}>Error !</span>
+      <span className={styles.errorSubTitle}>{desc}</span>
     </div>
   );
 };

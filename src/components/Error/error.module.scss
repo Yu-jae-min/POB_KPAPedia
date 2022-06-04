@@ -1,16 +1,16 @@
 @use '/src/styles/constants/colors';
 
-.noResultWrap {
+.errorWrap {
   flex-direction: column;
   height: 500px;
 
-  .noResultTitle {
+  .errorTitle {
     font-size: 30px;
     font-weight: bold;
     color: colors.$PRIMARY;
   }
 
-  .noResultSubTitle {
+  .errorSubTitle {
     margin-left: 14px;
     font-size: 18px;
     line-height: 25px;
