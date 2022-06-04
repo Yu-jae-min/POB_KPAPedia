@@ -1,22 +1,25 @@
-import { useNavigate, NavLink } from 'react-router-dom';
+import { useEffect, useMemo } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
 
-import { useRecoilState } from 'recoil';
-import { userId } from 'states/atom';
+import { useCheckLogin } from 'hooks/useLoginCheck';
 
 import styles from './header.module.scss';
 import { Logo } from 'assets/svg';
 
+import store from 'store';
+
 const Header = () => {
-  const [loginId, setLoginId] = useRecoilState(userId);
+  const { loginCheck, logOut } = useCheckLogin();
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    loginCheck();
+  }, [loginCheck]);
 
-  const handleLogOut = () => {
-    navigate('login');
-    setLoginId('');
-  };
+  const getStoreId = useMemo(() => {
+    return store.get('login');
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -29,10 +32,10 @@ const Header = () => {
         <Nav />
         <ul className={styles.user}>
           <li className={styles.welcome}>
-            <strong>{loginId}</strong>님 반가워요!
+            <strong>{getStoreId?.userId}</strong>님 반가워요!
           </li>
           <li>
-            <button type='button' className={styles.logOutBtn} onClick={handleLogOut}>
+            <button type='button' className={styles.logOutBtn} onClick={logOut}>
               로그아웃
             </button>
           </li>

@@ -1,23 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import store from 'store';
 
 import SEO from 'components/SEO/SEO';
 import ModalPortal from 'components/Modal/ModalPortal';
 import LoginModal from 'components/Modal/LoginModal/LoginModal';
 import LoginInput from './LoginInput/LoginInput';
 
-import { useRecoilState } from 'recoil';
-import { userId } from 'states/atom';
-
 import styles from './login.module.scss';
 import { LoginLogo } from 'assets/svg';
+import { useCheckLogin } from 'hooks/useLoginCheck';
 
 const validationId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 const validationPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({ id: '', pw: '' });
-  const [, setUserLoginId] = useRecoilState(userId);
   const [modalOpen, setModalOpen] = useState<boolean>();
   const [btnActive, setBtnActive] = useState<boolean>();
 
@@ -36,7 +34,7 @@ const Login = () => {
       return;
     }
 
-    setUserLoginId(userInfo.id);
+    store.set('login', { userId: userInfo.id });
     navigate('/');
   };
 
