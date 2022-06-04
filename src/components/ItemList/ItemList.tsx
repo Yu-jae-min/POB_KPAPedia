@@ -1,7 +1,8 @@
-import styles from './itemlist.module.scss';
 import { useNavigate } from 'react-router-dom';
 
 import { IAwardsListType, IPerformenceListType, IFestivalListType } from 'types/types';
+
+import styles from './itemlist.module.scss';
 
 interface IItemArrayType {
   itemArray: IAwardsListType[] | IPerformenceListType[] | IFestivalListType[];

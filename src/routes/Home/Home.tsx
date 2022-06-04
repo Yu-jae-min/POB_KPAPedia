@@ -1,8 +1,10 @@
 import SEO from 'components/SEO/SEO';
-import styles from './home.module.scss';
+
 import RecommendPerformance from './RecommendPerformance/RecommendPerformance';
 import RecommendFestival from './RecommendFestival/RecommendFestival';
 import RecommendAward from './RecommendAwards/RecommendAward';
+
+import styles from './home.module.scss';
 
 const Home = () => {
   return (

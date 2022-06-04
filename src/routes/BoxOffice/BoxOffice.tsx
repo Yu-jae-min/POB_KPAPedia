@@ -9,6 +9,8 @@ import { boxOfficeXmlChange } from 'hooks/useApiDataType';
 
 import { getBoxOfficeListApi } from 'services/api';
 
+import { BOXOFFICE_PARAMS_TITLE } from 'models/models';
+
 import styles from './boxOffice.module.scss';
 
 interface IRumType {
@@ -38,8 +40,8 @@ const BoxOffice = () => {
       <SEO title='KPA Pedia - 예매현황' />
       <div className={styles.titleWrap}>
         <div>
-          <h1 className={styles.title}>{PARAMS_TITLE.mainTitle}</h1>
-          <span className={styles.subTitle}>{PARAMS_TITLE.subTitle}</span>
+          <h1 className={styles.title}>{BOXOFFICE_PARAMS_TITLE.mainTitle}</h1>
+          <span className={styles.subTitle}>{BOXOFFICE_PARAMS_TITLE.subTitle}</span>
         </div>
       </div>
       {isLoading && <Spinner top={250} bottom={250} />}
@@ -51,8 +53,3 @@ const BoxOffice = () => {
 };
 
 export default BoxOffice;
-
-const PARAMS_TITLE = {
-  mainTitle: '흥행하고 있는 축제와 공연을 소개합니다',
-  subTitle: '가장 많은 사랑을 받고 있는 공연과 축제 즐겨보세요!',
-};

@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import styles from './boxOfficeItemList.module.scss';
-
 import { IBoxOfficeListType } from 'types/types';
+
+import styles from './boxOfficeItemList.module.scss';
 
 interface IitemArrayType {
   itemArray: IBoxOfficeListType[];

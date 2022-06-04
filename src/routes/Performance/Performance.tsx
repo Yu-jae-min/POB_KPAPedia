@@ -6,18 +6,20 @@ import SEO from 'components/SEO/SEO';
 import Spinner from 'components/Spinner/Spinner';
 import ItemList from 'components/ItemList/ItemList';
 import SearchTitle from 'components/Search/SearchTitle/SearchTitle';
-import SearchNoResult from 'components/Search/SearchNoResult/SearchNoResult';
+import Error from 'components/Error/Error';
 import SearchInput from 'components/Search/SearchInput/SearchInput';
+
+import { handleXmlChange } from 'hooks/useApiDataType';
+import useDebounce from 'hooks/useDebounce';
 
 import { useRecoilState } from 'recoil';
 import { requestNumber } from 'states/atom';
 
 import { getPerformanceListApi } from 'services/api';
 
-import { handleXmlChange } from 'hooks/useApiDataType';
-import useDebounce from 'hooks/useDebounce';
-
 import { IPerformenceListType } from 'types/types';
+
+import { NO_RESULT, PERFORMANCE_PARAMS_TITLE } from 'models/models';
 
 import styles from './performance.module.scss';
 
@@ -91,7 +93,7 @@ const Performance = () => {
     }
 
     if (debouncedValue && !filterItemList?.length) {
-      return <SearchNoResult />;
+      return <Error desc={NO_RESULT} />;
     }
 
     return <ItemList itemArray={itemList ?? []} />;
@@ -102,8 +104,12 @@ const Performance = () => {
   return (
     <section className={styles.performance}>
       <SEO title='KPA Pedia - 공연검색' />
-      <SearchTitle mainTitle={PARAMS_TITLE.mainTitle} subTitle={PARAMS_TITLE.subTitle} />
-      <SearchInput placeholder={PARAMS_TITLE.placeholder} handleInputValue={handleInputValue} isLoading={isLoading} />
+      <SearchTitle mainTitle={PERFORMANCE_PARAMS_TITLE.mainTitle} subTitle={PERFORMANCE_PARAMS_TITLE.subTitle} />
+      <SearchInput
+        placeholder={PERFORMANCE_PARAMS_TITLE.placeholder}
+        handleInputValue={handleInputValue}
+        isLoading={isLoading}
+      />
       {fillterItemList}
       {isLoad && <Spinner top={150} bottom={80} />}
       {ActiveLogin && <div ref={ref} className={styles.infiniteScrollDiv} />}
@@ -112,9 +118,3 @@ const Performance = () => {
 };
 
 export default Performance;
-
-const PARAMS_TITLE = {
-  mainTitle: '원하시는 공연을 검색해보세요!',
-  subTitle: `관람을 원하시거나 관심있는 공연을 검색해보세요. 최신 공연에 관한 모든 정보를 확인해보실 수 있습니다.`,
-  placeholder: '공연명을 입력해주세요.',
-};

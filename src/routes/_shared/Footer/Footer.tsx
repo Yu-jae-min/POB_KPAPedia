@@ -1,3 +1,5 @@
+import { FOOTER_LIST } from 'models/models';
+
 import styles from './footer.module.scss';
 
 const Footer = () => {
@@ -23,26 +25,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-const FOOTER_LIST = [
-  {
-    id: 1,
-    name: '이용약관',
-  },
-  {
-    id: 2,
-    name: '개인정보취급방침',
-  },
-  {
-    id: 3,
-    name: '매장찾기',
-  },
-  {
-    id: 4,
-    name: 'CONTACT',
-  },
-  {
-    id: 5,
-    name: '사이트 맵',
-  },
-];

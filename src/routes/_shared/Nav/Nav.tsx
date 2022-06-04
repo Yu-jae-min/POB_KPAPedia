@@ -1,8 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import styles from './nav.module.scss';
 import { cx } from 'styles';
+
 import { useResetRecoilState } from 'recoil';
 import { requestNumber } from 'states/atom';
+
+import { NAV_LIST } from 'models/models';
+
+import styles from './nav.module.scss';
 
 const Nav = () => {
   const InfiniteScrollReset = () => {
@@ -31,31 +35,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-const NAV_LIST = [
-  {
-    key: 1,
-    title: '홈',
-    path: '/',
-  },
-  {
-    key: 2,
-    title: '예매현황',
-    path: 'boxOffice',
-  },
-  {
-    key: 3,
-    title: '공연목록',
-    path: 'performance',
-  },
-  {
-    key: 4,
-    title: '축제목록',
-    path: 'festival',
-  },
-  {
-    key: 5,
-    title: '수상작',
-    path: 'award',
-  },
-];

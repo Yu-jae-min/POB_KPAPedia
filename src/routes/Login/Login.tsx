@@ -1,12 +1,15 @@
-import { ChangeEvent, useState } from 'react';
-import styles from './login.module.scss';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import LoginModal from 'components/Modal/LoginModal/LoginModal';
-import ModalPortal from 'components/Modal/ModalPortal';
-import { userId } from 'states/atom';
-import { LoginLogo } from 'assets/svg';
+
 import SEO from 'components/SEO/SEO';
+import ModalPortal from 'components/Modal/ModalPortal';
+import LoginModal from 'components/Modal/LoginModal/LoginModal';
+
+import { useRecoilState } from 'recoil';
+import { userId } from 'states/atom';
+
+import styles from './login.module.scss';
+import { LoginLogo } from 'assets/svg';
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({ id: '', pw: '' });

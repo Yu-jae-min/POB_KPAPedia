@@ -1,8 +1,11 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './boxOfficeTable.module.scss';
 
 import { IBoxOfficeListType } from 'types/types';
+
+import { TABLE_HEADER_WIDTH } from 'models/models';
+
+import styles from './boxOfficeTable.module.scss';
 
 interface IBoxOfficeDataType {
   boxOfficeData: IBoxOfficeListType[];
@@ -39,7 +42,7 @@ const BoxOfficeTable = ({ boxOfficeData }: IBoxOfficeDataType) => {
   }, [boxOfficeData, navigate]);
 
   const tableTitle = useMemo(() => {
-    return dataStructure.map(({ category }) => (
+    return TABLE_HEADER_WIDTH.map(({ category }) => (
       <th key={category} className={styles.tableHead}>
         {category}
       </th>
@@ -51,7 +54,7 @@ const BoxOfficeTable = ({ boxOfficeData }: IBoxOfficeDataType) => {
       <h1 className={styles.tableMainTitle}>박스오피스 TOP50</h1>
       <table className={styles.table}>
         <colgroup>
-          {dataStructure.map(({ id, tdWidth }) => (
+          {TABLE_HEADER_WIDTH.map(({ id, tdWidth }) => (
             <col key={id} width={tdWidth} />
           ))}
         </colgroup>
@@ -65,14 +68,3 @@ const BoxOfficeTable = ({ boxOfficeData }: IBoxOfficeDataType) => {
 };
 
 export default BoxOfficeTable;
-
-const dataStructure = [
-  { id: 1, category: '순위', tdWidth: '10%' },
-  { id: 2, category: '장르', tdWidth: '10%' },
-  { id: 3, category: '공연명', tdWidth: '15%' },
-  { id: 4, category: '공연장', tdWidth: '15%' },
-  { id: 5, category: '공연기간', tdWidth: '20%' },
-  { id: 6, category: '지역', tdWidth: '10%' },
-  { id: 7, category: '좌석수', tdWidth: '10%' },
-  { id: 8, category: '자세히 보기', tdWidth: '10%' },
-];
