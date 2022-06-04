@@ -1,0 +1,22 @@
+@use '/src/styles/constants/colors';
+
+.loginInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .inputLabel {
+    margin: 40px 0 10px;
+    font-size: 12px;
+    color: colors.$GRAY300;
+  }
+
+  .loginInput {
+    height: 35px;
+    font-size: 18px;
+    color: colors.$WHITE;
+    background-color: transparent;
+    border-bottom: 1px solid colors.$GRAY100;
+    caret-color: colors.$GRAY100;
+  }
+}

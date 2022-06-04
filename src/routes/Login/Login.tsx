@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import SEO from 'components/SEO/SEO';
 import ModalPortal from 'components/Modal/ModalPortal';
 import LoginModal from 'components/Modal/LoginModal/LoginModal';
+import LoginInput from './LoginInput/LoginInput';
 
 import { useRecoilState } from 'recoil';
 import { userId } from 'states/atom';
@@ -49,28 +50,8 @@ const Login = () => {
       <div className={styles.container}>
         <LoginLogo className={styles.loginLogo} />
         <div className={styles.inputWrap}>
-          <label htmlFor='id' className={styles.idLabel}>
-            USERNAME
-          </label>
-          <input
-            type='text'
-            name='id'
-            className={styles.idInput}
-            onChange={handleUserInfo}
-            maxLength={20}
-            autoComplete='off'
-          />
-          <label htmlFor='pw' className={styles.pwLabel}>
-            PASSWORD
-          </label>
-          <input
-            type='password'
-            name='pw'
-            className={styles.pwInput}
-            onChange={handleUserInfo}
-            maxLength={20}
-            autoComplete='off'
-          />
+          <LoginInput type='text' name='id' labelTitle='USERNAME' handleUserInfo={handleUserInfo} />
+          <LoginInput type='password' name='pw' labelTitle='PASSWORD' handleUserInfo={handleUserInfo} />
         </div>
         <button
           type='button'
