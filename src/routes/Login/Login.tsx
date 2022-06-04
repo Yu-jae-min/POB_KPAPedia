@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import SEO from 'components/SEO/SEO';
@@ -12,11 +12,14 @@ import { userId } from 'states/atom';
 import styles from './login.module.scss';
 import { LoginLogo } from 'assets/svg';
 
+const validationId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+const validationPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
+
 const Login = () => {
   const [userInfo, setUserInfo] = useState({ id: '', pw: '' });
   const [, setUserLoginId] = useRecoilState(userId);
   const [modalOpen, setModalOpen] = useState<boolean>();
-  const btnActive = userInfo.id && userInfo.pw;
+  const [btnActive, setBtnActive] = useState<boolean>();
 
   const navigate = useNavigate();
 
@@ -28,15 +31,12 @@ const Login = () => {
   };
 
   const handleLoginCheck = () => {
-    const { id, pw } = userInfo;
-    const foamCheck = !id || !pw;
-
-    if (foamCheck) {
+    if (!btnActive) {
       setModalOpen(true);
       return;
     }
 
-    setUserLoginId(id);
+    setUserLoginId(userInfo.id);
     navigate('/');
   };
 
@@ -44,14 +44,27 @@ const Login = () => {
     setModalOpen(false);
   };
 
+  useEffect(() => {
+    const { id, pw } = userInfo;
+
+    const idFoam = Boolean(id.length && id.match(validationId));
+    const pwFoam = Boolean(pw.length && pw.match(validationPw));
+
+    idFoam && pwFoam ? setBtnActive(true) : setBtnActive(false);
+  }, [userInfo]);
+
   return (
     <section className={styles.login}>
       <SEO title='KPA Pedia - 로그인' />
       <div className={styles.container}>
         <LoginLogo className={styles.loginLogo} />
         <div className={styles.inputWrap}>
-          <LoginInput type='text' name='id' labelTitle='USERNAME' handleUserInfo={handleUserInfo} />
-          <LoginInput type='password' name='pw' labelTitle='PASSWORD' handleUserInfo={handleUserInfo} />
+          <LoginInput
+            handleUserInfo={handleUserInfo}
+            userInfo={userInfo}
+            validationId={validationId}
+            validationPw={validationPw}
+          />
         </div>
         <button
           type='button'

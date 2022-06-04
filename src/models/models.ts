@@ -158,6 +158,11 @@ const TABLE_HEADER_WIDTH = [
   { id: 8, category: '자세히 보기', tdWidth: '10%' },
 ];
 
+const LOGIN_INPUT_INFO = [
+  { type: 'text', name: 'id', labelTitle: 'USERNAME', warning: '이메일 형식에 맞게 입력해주세요.' },
+  { type: 'password', name: 'pw', labelTitle: 'PASSWORD', warning: '영문, 숫자, 특수문자 조합으로 입력해주세요.' },
+];
+
 export {
   AWARDS_PARAMS_TITLE,
   FESTIVAL_PARAMS_TITLE,
@@ -170,4 +175,5 @@ export {
   FOOTER_LIST,
   NAV_LIST,
   TABLE_HEADER_WIDTH,
+  LOGIN_INPUT_INFO,
 };
