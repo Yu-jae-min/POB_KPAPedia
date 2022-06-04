@@ -31,6 +31,9 @@ export const handleXmlChange = (xml: string) => {
   let newData;
 
   new xml2js.Parser().parseString(xml, (err, result) => {
+    // eslint-disable-next-line prettier/prettier
+    console.log(result);
+
     const changeValue = result.dbs.db.map((item: IXmlChangeType) => {
       const keys = Object.keys(item);
 
