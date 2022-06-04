@@ -33,10 +33,12 @@
 
     .welcome {
       margin-right: 20px;
+      color: colors.$GRAY300;
 
       strong {
-        margin-right: 1px;
+        margin-right: 2px;
         font-weight: bold;
+        color: colors.$BLACK;
       }
     }
 

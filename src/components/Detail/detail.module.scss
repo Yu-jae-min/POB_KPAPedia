@@ -36,7 +36,6 @@
           min-width: 98px;
           padding: 10px 20px;
           margin-right: 20px;
-          font-weight: bold;
           color: colors.$WHITE;
           text-align: center;
           background-color: colors.$BLACK;
@@ -57,7 +56,6 @@
     .prfage {
       padding: 7px 10px;
       font-size: 12px;
-      font-weight: bold;
       color: colors.$WHITE;
       background-color: colors.$BLACK;
       border-radius: 5px;
@@ -87,7 +85,6 @@
       padding: 10px 20px;
       margin: 50px 0 20px;
       font-size: 16px;
-      font-weight: bold;
       color: colors.$WHITE;
       background-color: colors.$BLACK;
       border-radius: 10px;
@@ -107,7 +104,6 @@
       height: 25px;
       margin-right: 7px;
       font-size: 16px;
-      font-weight: bold;
       line-height: 25px;
       color: colors.$WHITE;
       text-align: center;
@@ -117,12 +113,13 @@
 
     .title {
       font-size: 16px;
-      font-weight: bold;
     }
 
     .desc {
       margin-top: 15px;
       font-size: 14px;
+      line-height: 20px;
+      color: colors.$GRAY300;
     }
   }
 }
