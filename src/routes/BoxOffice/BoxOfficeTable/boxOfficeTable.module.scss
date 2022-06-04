@@ -1,0 +1,62 @@
+@use '/src/styles/constants/colors';
+
+.tableWrap {
+  position: relative;
+  margin-top: 60px;
+  overflow-x: scroll;
+  font-size: 14px;
+  line-height: 22px;
+
+  .tableMainTitle {
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .table {
+    width: 100%;
+    margin: 0 auto;
+    text-align: right;
+    border-top: 1px solid colors.$GRAY50;
+
+    .tableHead {
+      font-size: 16px;
+      color: colors.$GRAY300;
+    }
+
+    .tableBody {
+      .tableRows {
+        .tableData:first-child {
+          text-align: left;
+        }
+
+        &:first-child {
+          font-weight: bold;
+          color: colors.$PRIMARY;
+        }
+
+        .detailBtn {
+          padding: 5px 10px;
+          color: colors.$WHITE;
+          background-color: colors.$BLACK;
+          border-radius: 5px;
+
+          &:hover {
+            background-color: colors.$PRIMARY;
+            transition: all 0.9s;
+          }
+        }
+      }
+    }
+
+    td,
+    th {
+      padding: 15px;
+      border-bottom: 1px solid colors.$GRAY50;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+  }
+}

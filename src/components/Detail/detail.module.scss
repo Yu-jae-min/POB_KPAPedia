@@ -33,12 +33,18 @@
         margin-top: 20px;
 
         .descListTitle {
+          min-width: 98px;
           padding: 10px 20px;
           margin-right: 20px;
           font-weight: bold;
           color: colors.$WHITE;
+          text-align: center;
           background-color: colors.$BLACK;
           border-radius: 7px;
+        }
+
+        .detailDescription {
+          line-height: 22px;
         }
       }
 

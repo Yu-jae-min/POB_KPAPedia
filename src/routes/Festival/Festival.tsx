@@ -67,7 +67,7 @@ const Festival = () => {
     }
   );
 
-  const HandleInputValue = (event: any) => {
+  const handleInputValue = (event: any) => {
     const { value } = event.currentTarget;
     setInputValue(value);
   };
@@ -99,7 +99,7 @@ const Festival = () => {
     <section className={styles.festival}>
       <SEO title='KPA Pedia - 축제목록' />
       <SearchTitle mainTitle={PARAMS_TITLE.mainTitle} subTitle={PARAMS_TITLE.subTitle} />
-      <SearchInput placeholder={PARAMS_TITLE.placeholder} HandleInputValue={HandleInputValue} isLoading={isLoading} />
+      <SearchInput placeholder={PARAMS_TITLE.placeholder} handleInputValue={handleInputValue} isLoading={isLoading} />
       {fillterItemList}
       {isLoad && <Spinner top={150} bottom={80} />}
       {ActiveLogin && <div ref={ref} className={styles.infiniteScrollDiv} />}

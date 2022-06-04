@@ -16,14 +16,14 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const HandleUserInfo = (event: any) => {
+  const handleUserInfo = (event: any) => {
     const { name, value } = event.currentTarget;
 
     const nextInput = { ...userInfo, [name]: value };
     setUserInfo(nextInput);
   };
 
-  const HandleLoginCheck = () => {
+  const handleLoginCheck = () => {
     const { id, pw } = userInfo;
     const foamCheck = !id || !pw;
 
@@ -36,7 +36,7 @@ const Login = () => {
     navigate('/');
   };
 
-  const HandleModalShow = () => {
+  const handleModalShow = () => {
     setModalOpen(false);
   };
 
@@ -53,8 +53,8 @@ const Login = () => {
             type='text'
             name='id'
             className={styles.idInput}
-            onChange={HandleUserInfo}
-            maxLength={12}
+            onChange={handleUserInfo}
+            maxLength={20}
             autoComplete='off'
           />
           <label htmlFor='pw' className={styles.pwLabel}>
@@ -64,21 +64,21 @@ const Login = () => {
             type='password'
             name='pw'
             className={styles.pwInput}
-            onChange={HandleUserInfo}
-            maxLength={12}
+            onChange={handleUserInfo}
+            maxLength={20}
             autoComplete='off'
           />
         </div>
         <button
           type='button'
           className={btnActive ? styles.loginBtnActive : styles.loginBtn}
-          onClick={HandleLoginCheck}
+          onClick={handleLoginCheck}
         >
           로그인
         </button>
         {modalOpen && (
           <ModalPortal>
-            <LoginModal onClose={HandleModalShow} />
+            <LoginModal onClose={handleModalShow} />
           </ModalPortal>
         )}
       </div>
@@ -87,3 +87,6 @@ const Login = () => {
 };
 
 export default Login;
+
+// 아이디는 6~20자의 영문자 또는 숫자의 조합입니다.
+// 비밀번호는 8자 이상의 영문, 숫자, 특수문자의 조합입니다.

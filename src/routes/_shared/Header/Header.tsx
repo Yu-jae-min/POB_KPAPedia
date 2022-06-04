@@ -12,7 +12,7 @@ const Header = () => {
 
   const navigate = useNavigate();
 
-  const HandleLogOut = () => {
+  const handleLogOut = () => {
     navigate('login');
     setLoginId('');
   };
@@ -31,7 +31,7 @@ const Header = () => {
             <strong>{loginId}</strong>님 반가워요!
           </li>
           <li>
-            <button type='button' className={styles.logOutBtn} onClick={HandleLogOut}>
+            <button type='button' className={styles.logOutBtn} onClick={handleLogOut}>
               로그아웃
             </button>
           </li>

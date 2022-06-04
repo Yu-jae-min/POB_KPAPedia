@@ -40,29 +40,29 @@ const Detail = () => {
               <ul className={styles.descListWrap}>
                 <li className={styles.descList}>
                   <span className={styles.descListTitle}>공연 장소</span>
-                  <span className={styles.fcltynm}>{fcltynm}</span>
+                  <span className={styles.detailDescription}>{fcltynm}</span>
                 </li>
                 <li className={styles.descList}>
                   <span className={styles.descListTitle}>출연 배우</span>
-                  <span className={styles.prfcast}>{prfcast}</span>
+                  <span className={styles.detailDescription}>{prfcast}</span>
                 </li>
                 <li className={styles.descList}>
                   <span className={styles.descListTitle}>티겟 예매</span>
-                  <span className={styles.pcseguidance}>현장 예매, 티켓 예매 사이트</span>
+                  <span className={styles.detailDescription}>현장 예매, 티켓 예매 사이트</span>
                 </li>
                 <li className={styles.descList}>
                   <span className={styles.descListTitle}>공연 날짜</span>
-                  <span className={styles.dtguidance}>{dtguidance}</span>
+                  <span className={styles.detailDescription}>{dtguidance}</span>
                 </li>
                 <li className={styles.descList}>
                   <span className={styles.descListTitle}>공연 기간</span>
-                  <span className={styles.date}>
+                  <span className={styles.detailDescription}>
                     {prfpdfrom} ~ {prfpdto}
                   </span>
                 </li>
                 <li className={styles.descList}>
                   <span className={styles.descListTitle}>공연 시간</span>
-                  <span className={styles.prfruntime}>{prfruntime}</span>
+                  <span className={styles.detailDescription}>{prfruntime}</span>
                 </li>
               </ul>
             </div>
