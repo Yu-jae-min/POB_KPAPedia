@@ -30,9 +30,11 @@ export const boxOfficeXmlChange = (xml: string) => {
 export const handleXmlChange = (xml: string) => {
   let newData;
 
+  console.log('xml', xml);
+
   new xml2js.Parser().parseString(xml, (err, result) => {
     // eslint-disable-next-line prettier/prettier
-    console.log(result);
+    console.log('result', result);
 
     const changeValue = result.dbs.db.map((item: IXmlChangeType) => {
       const keys = Object.keys(item);
