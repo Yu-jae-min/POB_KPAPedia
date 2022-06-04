@@ -30,8 +30,8 @@ const RecommendPerformance = () => {
     <div className={styles.performanceWrap}>
       <h1 className={styles.title}>추천 공연</h1>
       <ItemList itemArray={data ?? []} />
-      {isError && <Error desc={REQUEST_ERROR} />}
-      {isLoading && <Spinner top={220} bottom={220} />}
+      {isError && <Error desc={REQUEST_ERROR} paddingTop={50} height={435} />}
+      {isLoading && <Spinner marginTop={220} marginBottom={220} />}
     </div>
   );
 };

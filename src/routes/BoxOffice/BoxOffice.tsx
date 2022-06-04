@@ -46,10 +46,10 @@ const BoxOffice = () => {
         </div>
       </div>
       {isError && <Error desc={REQUEST_ERROR} />}
-      {isLoading && <Spinner top={250} bottom={250} />}
+      {isLoading && <Spinner marginTop={250} marginBottom={250} />}
       <BoxOfficeItemList itemArray={thumbnailMainData} />
       <BoxOfficeItemList itemArray={thumbnailSubData} />
-      {!isLoading && <BoxOfficeTable boxOfficeData={boxOfficeData} />}
+      {!isLoading && !isError && <BoxOfficeTable boxOfficeData={boxOfficeData} />}
     </section>
   );
 };

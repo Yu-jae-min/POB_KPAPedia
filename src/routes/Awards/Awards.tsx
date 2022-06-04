@@ -118,7 +118,7 @@ const Awards = () => {
         isLoading={isLoading}
       />
       {fillterItemList}
-      {isLoad && <Spinner top={150} bottom={80} />}
+      {isLoad && <Spinner marginTop={150} marginBottom={80} />}
       {ActiveLogin && <div ref={ref} className={styles.infiniteScrollDiv} />}
     </section>
   );

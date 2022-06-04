@@ -1,11 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
+import Spinner from 'components/Spinner/Spinner';
+import Error from 'components/Error/Error';
+
 import { handleXmlChange } from 'hooks/useApiDataType';
 
 import { getDetailApi } from 'services/api';
 
-import { PERPOMANCE_MANNER_LIST_BEFORE, PERPOMANCE_MANNER_LIST_COMES } from 'models/models';
+import { PERPOMANCE_MANNER_LIST_BEFORE, REQUEST_ERROR, PERPOMANCE_MANNER_LIST_COMES } from 'models/models';
 
 import styles from './detail.module.scss';
 
@@ -13,7 +16,7 @@ const Detail = () => {
   const { detail } = useParams();
   const detailParams = detail ?? '';
 
-  const { data } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     ['getDetailApi'],
     () =>
       getDetailApi(detailParams)
@@ -73,6 +76,8 @@ const Detail = () => {
           </div>
         );
       })}
+      {isError && <Error desc={REQUEST_ERROR} paddingTop={185} height={465} />}
+      {isLoading && <Spinner marginTop={200} marginBottom={270} />}
       <div className={styles.performanceMannerWrap}>
         <div className={styles.beforeWrap}>
           <span className={styles.mainTitle}>공연장 오기 전</span>
