@@ -9,7 +9,6 @@ import LoginInput from './LoginInput/LoginInput';
 
 import styles from './login.module.scss';
 import { LoginLogo } from 'assets/svg';
-import { useCheckLogin } from 'hooks/useLoginCheck';
 
 const validationId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 const validationPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
