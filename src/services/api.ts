@@ -6,8 +6,6 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
-// https://kopis.or.kr/openApi/restful/boxoffice?service=45fc0552c4eb40798b83c68bb296a84c&ststype=day&date=20220602
-
 const BASE_URL = 'openApi/restful';
 const PERFORMANCE_BASE_URL = `${BASE_URL}/pblprfr`;
 const FESTIVAL_BASE_URL = `${BASE_URL}/prffest`;
