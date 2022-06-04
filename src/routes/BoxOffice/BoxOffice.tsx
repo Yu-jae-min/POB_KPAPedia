@@ -6,6 +6,8 @@ import BoxOfficeItemList from './BoxOfficeItemList/BoxOfficeItemList';
 import BoxOfficeTable from './BoxOfficeTable/BoxOfficeTable';
 import Error from 'components/Error/Error';
 
+import { boxOfficeXmlChange } from 'hooks/useApiDataType';
+
 import { getBoxOfficeListApi } from 'services/api';
 
 import { BOXOFFICE_PARAMS_TITLE, REQUEST_ERROR } from 'models/models';
@@ -22,11 +24,7 @@ const BoxOffice = () => {
     () =>
       getBoxOfficeListApi()
         .then((res) => res.data)
-        .then((abc) => {
-          // eslint-disable-next-line no-console
-          console.log('abc', abc);
-        }),
-    // .then((xml) => boxOfficeXmlChange(xml)),
+        .then((xml) => boxOfficeXmlChange(xml)),
     {
       staleTime: 2 * 60 * 1000,
       cacheTime: Infinity,
