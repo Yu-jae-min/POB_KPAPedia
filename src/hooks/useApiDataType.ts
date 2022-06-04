@@ -1,10 +1,14 @@
 import xml2js from 'xml2js';
 
-export const boxOfficeXmlChange = (xml: any) => {
+interface IXmlChangeType {
+  [index: string]: string | [string];
+}
+
+export const boxOfficeXmlChange = (xml: string) => {
   let newData;
 
   new xml2js.Parser().parseString(xml, (err, result) => {
-    const changeValue = result.boxofs.boxof.map((item: any) => {
+    const changeValue = result.boxofs.boxof.map((item: IXmlChangeType) => {
       const keys = Object.keys(item);
 
       for (let i = 0; i < keys.length; i += 1) {
@@ -23,11 +27,11 @@ export const boxOfficeXmlChange = (xml: any) => {
   return newData;
 };
 
-export const handleXmlChange = (xml: any) => {
+export const handleXmlChange = (xml: string) => {
   let newData;
 
   new xml2js.Parser().parseString(xml, (err, result) => {
-    const changeValue = result.dbs.db.map((item: any) => {
+    const changeValue = result.dbs.db.map((item: IXmlChangeType) => {
       const keys = Object.keys(item);
 
       for (let i = 0; i < keys.length; i += 1) {

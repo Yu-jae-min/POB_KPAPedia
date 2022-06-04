@@ -17,11 +17,17 @@ import { getAwardListApi } from 'services/api';
 import { handleXmlChange } from 'hooks/useApiDataType';
 import useDebounce from 'hooks/useDebounce';
 
+import { IAwardsListType } from 'types/types';
+
 import styles from './awards.module.scss';
+
+interface IPrfnmType {
+  prfnm: string;
+}
 
 const Awards = () => {
   const [itemList, setItemList] = useState();
-  const [filterItemList, setFilterItemList] = useState<any>();
+  const [filterItemList, setFilterItemList] = useState<IAwardsListType[]>();
   const [inputValue, setInputValue] = useState<string>('');
   const [request, setRequest] = useRecoilState(requestNumber);
   const [isLoad, setIsLoad] = useState<boolean>(false);
@@ -65,14 +71,14 @@ const Awards = () => {
     }
   );
 
-  const handleInputValue = (event: any) => {
+  const handleInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setInputValue(value);
   };
 
   useEffect(() => {
     const filterData = data ?? [];
-    const searchList = filterData.filter(({ prfnm }: any) =>
+    const searchList = filterData.filter(({ prfnm }: IPrfnmType) =>
       prfnm.toLowerCase().includes(debouncedValue.toLowerCase())
     );
 
@@ -80,11 +86,11 @@ const Awards = () => {
   }, [debouncedValue, data]);
 
   const fillterItemList = useMemo(() => {
-    if (debouncedValue && filterItemList.length) {
+    if (debouncedValue && filterItemList?.length) {
       return <ItemList itemArray={filterItemList} />;
     }
 
-    if (debouncedValue && !filterItemList.length) {
+    if (debouncedValue && !filterItemList?.length) {
       return <SearchNoResult />;
     }
 

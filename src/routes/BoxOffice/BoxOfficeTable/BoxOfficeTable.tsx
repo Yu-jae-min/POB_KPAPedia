@@ -2,7 +2,13 @@ import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './boxOfficeTable.module.scss';
 
-const BoxOfficeTable = ({ boxOfficeData }: any) => {
+import { IBoxOfficeListType } from 'types/types';
+
+interface IBoxOfficeDataType {
+  boxOfficeData: IBoxOfficeListType[];
+}
+
+const BoxOfficeTable = ({ boxOfficeData }: IBoxOfficeDataType) => {
   const navigate = useNavigate();
 
   const tableBody = useMemo(() => {
@@ -10,7 +16,7 @@ const BoxOfficeTable = ({ boxOfficeData }: any) => {
       navigate(`/${mt20id}`);
     };
 
-    return boxOfficeData.map((item: any) => {
+    return boxOfficeData.map((item: IBoxOfficeListType) => {
       const { rnum, cate, prfnm, prfplcnm, prfpd, area, seatcnt, mt20id } = item;
 
       return (

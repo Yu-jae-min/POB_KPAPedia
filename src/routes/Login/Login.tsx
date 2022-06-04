@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import styles from './login.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
@@ -16,7 +16,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleUserInfo = (event: any) => {
+  const handleUserInfo = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
 
     const nextInput = { ...userInfo, [name]: value };

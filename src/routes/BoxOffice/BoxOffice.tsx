@@ -11,6 +11,10 @@ import { getBoxOfficeListApi } from 'services/api';
 
 import styles from './boxOffice.module.scss';
 
+interface IRumType {
+  rnum: string;
+}
+
 const BoxOffice = () => {
   const { data, isLoading } = useQuery(
     ['getBoxOfficeListApi'],
@@ -26,8 +30,8 @@ const BoxOffice = () => {
   );
 
   const boxOfficeData = data ?? [];
-  const thumbnailMainData = boxOfficeData.filter(({ rnum }: any) => Number(rnum) < 4);
-  const thumbnailSubData = boxOfficeData.filter(({ rnum }: any) => Number(rnum) < 8 && Number(rnum) > 3);
+  const thumbnailMainData = boxOfficeData.filter(({ rnum }: IRumType) => Number(rnum) < 4);
+  const thumbnailSubData = boxOfficeData.filter(({ rnum }: IRumType) => Number(rnum) < 8 && Number(rnum) > 3);
 
   return (
     <section className={styles.boxOffice}>

@@ -2,7 +2,13 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './boxOfficeItemList.module.scss';
 
-const BoxOfficeItemList = ({ itemArray }: any) => {
+import { IBoxOfficeListType } from 'types/types';
+
+interface IitemArrayType {
+  itemArray: IBoxOfficeListType[];
+}
+
+const BoxOfficeItemList = ({ itemArray }: IitemArrayType) => {
   const thumnailCheck = itemArray.length < 4;
   const navigate = useNavigate();
 
@@ -12,7 +18,7 @@ const BoxOfficeItemList = ({ itemArray }: any) => {
 
   return (
     <ul className={thumnailCheck ? styles.mainItemListWrap : styles.subItemListWrap}>
-      {itemArray.map((item: any) => {
+      {itemArray.map((item: IBoxOfficeListType) => {
         const { prfplcnm, prfnm, rnum, poster, mt20id } = item;
         const key = `${prfnm}+${rnum}`;
 

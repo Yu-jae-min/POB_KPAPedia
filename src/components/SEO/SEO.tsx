@@ -1,10 +1,10 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
-interface titleType {
+interface ITitleType {
   title: string;
 }
 
-const SEO = ({ title }: titleType) => {
+const SEO = ({ title }: ITitleType) => {
   return (
     <HelmetProvider>
       <Helmet>

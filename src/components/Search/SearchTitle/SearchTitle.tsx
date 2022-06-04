@@ -1,6 +1,11 @@
 import styles from './searchTitle.module.scss';
 
-const SearchTitle = ({ mainTitle, subTitle }: any) => {
+interface ISearchTitleType {
+  mainTitle: string;
+  subTitle: string;
+}
+
+const SearchTitle = ({ mainTitle, subTitle }: ISearchTitleType) => {
   return (
     <div className={styles.titleWrap}>
       <div>

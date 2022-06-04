@@ -1,6 +1,12 @@
 import styles from './searchInput.module.scss';
 
-const SearchInput = ({ placeholder, handleInputValue, isLoading }: any) => {
+interface ISearchInputParamsType {
+  placeholder: string;
+  handleInputValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isLoading: boolean;
+}
+
+const SearchInput = ({ placeholder, handleInputValue, isLoading }: ISearchInputParamsType) => {
   return (
     <input
       type='text'

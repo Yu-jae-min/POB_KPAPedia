@@ -5,12 +5,13 @@ import { useQuery } from 'react-query';
 import { handleXmlChange } from 'hooks/useApiDataType';
 
 const Detail = () => {
-  const param: any = useParams();
+  const { detail } = useParams();
+  const detailParams = detail ?? '';
 
   const { data } = useQuery(
     ['getDetailApi'],
     () =>
-      getDetailApi(param.detail)
+      getDetailApi(detailParams)
         .then((res) => res.data)
         .then((xml) => handleXmlChange(xml)),
     {

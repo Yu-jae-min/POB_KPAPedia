@@ -1,6 +1,10 @@
 import styles from './loginModal.module.scss';
 
-const LoginModal = ({ onClose }: any) => {
+interface ILoginModalCloseBtnType {
+  onClose: () => void;
+}
+
+const LoginModal = ({ onClose }: ILoginModalCloseBtnType) => {
   return (
     <div className={styles.loginModal}>
       <div className={styles.content}>

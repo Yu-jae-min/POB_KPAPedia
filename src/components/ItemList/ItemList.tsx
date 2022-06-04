@@ -1,7 +1,13 @@
 import styles from './itemlist.module.scss';
 import { useNavigate } from 'react-router-dom';
 
-const ItemList = ({ itemArray }: any) => {
+import { IAwardsListType, IPerformenceListType, IFestivalListType } from 'types/types';
+
+interface IItemArrayType {
+  itemArray: IAwardsListType[] | IPerformenceListType[] | IFestivalListType[];
+}
+
+const ItemList = ({ itemArray }: IItemArrayType) => {
   const navigate = useNavigate();
 
   const goToDetail = (mt20id: string) => {
@@ -10,7 +16,7 @@ const ItemList = ({ itemArray }: any) => {
 
   return (
     <ul className={styles.itemListWrap}>
-      {itemArray.map((item: any) => {
+      {itemArray.map((item: IAwardsListType | IPerformenceListType | IFestivalListType) => {
         const { mt20id, fcltynm, poster, genrenm, prfnm, prfpdfrom, prfpdto } = item;
         const key = `${prfnm}+${fcltynm}`;
 
