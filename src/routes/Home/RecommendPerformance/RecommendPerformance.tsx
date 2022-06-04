@@ -3,14 +3,12 @@ import { useQuery } from 'react-query';
 import Spinner from 'components/Spinner/Spinner';
 import ItemList from 'components/ItemList/ItemList';
 
-import useApiDataType from 'hooks/useApiDataType';
+import { handleXmlChange } from 'hooks/useApiDataType';
 import { getPerformanceListApi } from 'services/api';
 
 import styles from './recommendPerformance.module.scss';
 
 const RecommendPerformance = () => {
-  const { handleXmlChange } = useApiDataType();
-
   const { data, isLoading } = useQuery(
     ['getPerformanceListApi'],
     () =>

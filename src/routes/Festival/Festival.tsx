@@ -14,7 +14,7 @@ import { requestNumber } from 'states/atom';
 
 import { getFestivalListApi } from 'services/api';
 
-import useApiDataType from 'hooks/useApiDataType';
+import { handleXmlChange } from 'hooks/useApiDataType';
 import useDebounce from 'hooks/useDebounce';
 
 import styles from './festival.module.scss';
@@ -27,8 +27,6 @@ const Festival = () => {
   const [isLoad, setIsLoad] = useState<boolean>(false);
   const [ref, inView] = useInView();
   const debouncedValue = useDebounce(inputValue, 300);
-
-  const { handleXmlChange } = useApiDataType();
 
   const getMovieList = useCallback(async () => {
     setIsLoad(true);

@@ -2,14 +2,12 @@ import { useParams } from 'react-router-dom';
 import { getDetailApi } from 'services/api';
 import styles from './detail.module.scss';
 import { useQuery } from 'react-query';
-import useApiDataType from 'hooks/useApiDataType';
+import { handleXmlChange } from 'hooks/useApiDataType';
 
 const Detail = () => {
   const param: any = useParams();
 
-  const { handleXmlChange } = useApiDataType();
-
-  const { data, isLoading, isError } = useQuery(
+  const { data } = useQuery(
     ['getDetailApi'],
     () =>
       getDetailApi(param.detail)

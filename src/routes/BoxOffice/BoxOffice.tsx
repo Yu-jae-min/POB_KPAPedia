@@ -5,15 +5,13 @@ import Spinner from 'components/Spinner/Spinner';
 import BoxOfficeItemList from './BoxOfficeItemList/BoxOfficeItemList';
 import BoxOfficeTable from './BoxOfficeTable/BoxOfficeTable';
 
-import useApiDataType from 'hooks/useApiDataType';
+import { boxOfficeXmlChange } from 'hooks/useApiDataType';
 
 import { getBoxOfficeListApi } from 'services/api';
 
 import styles from './boxOffice.module.scss';
 
 const BoxOffice = () => {
-  const { boxOfficeXmlChange } = useApiDataType();
-
   const { data, isLoading } = useQuery(
     ['getBoxOfficeListApi'],
     () =>

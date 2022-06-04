@@ -14,7 +14,7 @@ import { requestNumber } from 'states/atom';
 
 import { getAwardListApi } from 'services/api';
 
-import useApiDataType from 'hooks/useApiDataType';
+import { handleXmlChange } from 'hooks/useApiDataType';
 import useDebounce from 'hooks/useDebounce';
 
 import styles from './awards.module.scss';
@@ -27,8 +27,6 @@ const Awards = () => {
   const [isLoad, setIsLoad] = useState<boolean>(false);
   const [ref, inView] = useInView();
   const debouncedValue = useDebounce(inputValue, 300);
-
-  const { handleXmlChange } = useApiDataType();
 
   const getMovieList = useCallback(async () => {
     setIsLoad(true);
@@ -96,10 +94,10 @@ const Awards = () => {
   const ActiveLogin = !inputValue && defaultItemList.length !== 0;
 
   return (
-    <section className={styles.festival}>
+    <section className={styles.performance}>
       <SEO title='KPA Pedia - 수상작' />
       <SearchTitle mainTitle={PARAMS_TITLE.mainTitle} subTitle={PARAMS_TITLE.subTitle} />
-      <SearchInput placeholder={PARAMS_TITLE.placeholder} HandleInputValue={handleInputValue} isLoading={isLoading} />
+      <SearchInput placeholder={PARAMS_TITLE.placeholder} handleInputValue={handleInputValue} isLoading={isLoading} />
       {fillterItemList}
       {isLoad && <Spinner top={150} bottom={80} />}
       {ActiveLogin && <div ref={ref} className={styles.infiniteScrollDiv} />}
