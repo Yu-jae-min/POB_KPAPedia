@@ -19,7 +19,7 @@ import { getFestivalListApi } from 'services/api';
 
 import { IFestivalListType } from 'types/types';
 
-import { NO_RESULT, REQUEST_ERROR, FESTIVAL_PARAMS_TITLE } from 'models/models';
+import { NO_RESULT, FESTIVAL_PARAMS_TITLE } from 'models/models';
 
 import styles from './festival.module.scss';
 
