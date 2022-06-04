@@ -1,5 +1,5 @@
 
-# 프로젝트 명
+# KPA Pedia
 
 [🎉  배포주소](https://kpa-pedia.netlify.app/)
 
