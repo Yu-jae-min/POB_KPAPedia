@@ -55,6 +55,7 @@
     "recoil": "^0.7.3-alpha.2",
     "recoil-persist": "^4.2.0",
     "store": "^2.0.12",
+    "stream-browserify": "^3.0.0",
     "timers": "^0.1.1",
     "victory": "^36.4.0",
     "victory-core": "^36.4.0",
