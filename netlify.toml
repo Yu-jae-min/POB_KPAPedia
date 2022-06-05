@@ -6,5 +6,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/login"
+  to = "http://www.kopis.or.kr/:splat"
   status = 302
