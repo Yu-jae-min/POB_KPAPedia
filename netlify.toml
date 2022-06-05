@@ -3,8 +3,3 @@
   to = "http://www.kopis.or.kr/:splat"
   status = 200
   force = true
-
-[[redirects]]
-  from = "/*"
-  to = "http://www.kopis.or.kr/:splat"
-  status = 302
