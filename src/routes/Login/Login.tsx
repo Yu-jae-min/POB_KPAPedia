@@ -55,14 +55,12 @@ const Login = () => {
       <SEO title='KPA Pedia - 로그인' />
       <div className={styles.container}>
         <LoginLogo className={styles.loginLogo} />
-        <div className={styles.inputWrap}>
-          <LoginInput
-            handleUserInfo={handleUserInfo}
-            userInfo={userInfo}
-            validationId={validationId}
-            validationPw={validationPw}
-          />
-        </div>
+        <LoginInput
+          handleUserInfo={handleUserInfo}
+          userInfo={userInfo}
+          validationId={validationId}
+          validationPw={validationPw}
+        />
         <button
           type='button'
           className={btnActive ? styles.loginBtnActive : styles.loginBtn}
