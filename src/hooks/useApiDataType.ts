@@ -11,9 +11,6 @@ export const boxOfficeXmlChange = (xml: string) => {
   console.log('xml', xml);
 
   new xml2js.Parser().parseString(xml, (err, result) => {
-    // eslint-disable-next-line no-console
-    console.log('result', result);
-
     const changeValue = result.boxofs.boxof.map((item: IXmlChangeType) => {
       const keys = Object.keys(item);
 

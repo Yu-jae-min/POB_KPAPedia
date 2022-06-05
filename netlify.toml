@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/proxy/*"
-  to = "http://www.kopis.or.kr/:splat"
+  to = "http://www.kopis.or.kr/"
   status = 200
   force = true
