@@ -32,19 +32,19 @@ const Awards = () => {
   const [filterItemList, setFilterItemList] = useState<IAwardsListType[]>();
   const [inputValue, setInputValue] = useState<string>('');
   const [request, setRequest] = useRecoilState(requestNumber);
-  const [isError, setIsError] = useState<string>(NO_RESULT);
+  const [isError, setIsError] = useState<boolean>(false);
   const [isLoad, setIsLoad] = useState<boolean>(false);
   const [ref, inView] = useInView();
   const debouncedValue = useDebounce(inputValue, 300);
 
   const getMovieList = useCallback(async () => {
-    setIsError(NO_RESULT);
+    setIsError(false);
     setIsLoad(true);
 
     await getAwardListApi({ cpage: '1', rows: String(request) })
       .then((res) => res.data)
       .then((xml) => setItemList(handleXmlChange(xml)))
-      .catch(() => setIsError(REQUEST_ERROR));
+      .catch(() => setIsError(true));
 
     setIsLoad(false);
   }, [request]);
@@ -99,8 +99,8 @@ const Awards = () => {
       return <Error desc={NO_RESULT} />;
     }
 
-    if (!isLoad && !filterItemList?.length) {
-      return <Error desc={isError} />;
+    if (!isLoad && isError) {
+      return <Error desc={REQUEST_ERROR} />;
     }
 
     return <ItemList itemArray={itemList ?? []} />;
@@ -118,7 +118,7 @@ const Awards = () => {
         isLoading={isLoading}
       />
       {fillterItemList}
-      {isLoad && <Spinner marginTop={150} marginBottom={80} />}
+      {isLoad && !isError && <Spinner marginTop={150} marginBottom={80} />}
       {ActiveLogin && <div ref={ref} className={styles.infiniteScrollDiv} />}
     </section>
   );

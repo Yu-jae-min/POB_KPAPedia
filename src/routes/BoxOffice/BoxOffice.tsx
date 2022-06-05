@@ -45,8 +45,8 @@ const BoxOffice = () => {
           <span className={styles.subTitle}>{BOXOFFICE_PARAMS_TITLE.subTitle}</span>
         </div>
       </div>
-      {isError && <Error desc={REQUEST_ERROR} />}
-      {isLoading && <Spinner marginTop={250} marginBottom={250} />}
+      {!isLoading && isError && <Error desc={REQUEST_ERROR} />}
+      {isLoading && !isError && <Spinner marginTop={250} marginBottom={250} />}
       <BoxOfficeItemList itemArray={thumbnailMainData} />
       <BoxOfficeItemList itemArray={thumbnailSubData} />
       {!isLoading && !isError && <BoxOfficeTable boxOfficeData={boxOfficeData} />}

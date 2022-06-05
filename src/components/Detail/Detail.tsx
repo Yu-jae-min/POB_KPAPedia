@@ -76,8 +76,8 @@ const Detail = () => {
           </div>
         );
       })}
-      {isError && <Error desc={REQUEST_ERROR} paddingTop={185} height={465} />}
-      {isLoading && <Spinner marginTop={200} marginBottom={270} />}
+      {isError && !isLoading && <Error desc={REQUEST_ERROR} paddingTop={185} height={465} />}
+      {isLoading && !isError && <Spinner marginTop={200} marginBottom={270} />}
       <div className={styles.performanceMannerWrap}>
         <div className={styles.beforeWrap}>
           <span className={styles.mainTitle}>공연장 오기 전</span>
