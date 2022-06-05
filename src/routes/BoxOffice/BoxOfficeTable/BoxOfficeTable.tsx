@@ -41,7 +41,7 @@ const BoxOfficeTable = ({ boxOfficeData }: IBoxOfficeDataType) => {
         </tr>
       );
     });
-  }, [boxOfficeData, navigate]);
+  }, [navigate, tableItem]);
 
   const tableTitle = useMemo(() => {
     return TABLE_HEADER_WIDTH.map(({ category }) => (
