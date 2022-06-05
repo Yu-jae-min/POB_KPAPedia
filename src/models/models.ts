@@ -163,6 +163,8 @@ const LOGIN_INPUT_INFO = [
   { type: 'password', name: 'pw', labelTitle: 'PASSWORD', warning: '영문, 숫자, 특수문자 조합으로 입력해주세요.' },
 ];
 
+const BOXOFFICE_BASE_URL = 'http://www.kopis.or.kr';
+
 export {
   AWARDS_PARAMS_TITLE,
   FESTIVAL_PARAMS_TITLE,
@@ -176,4 +178,5 @@ export {
   NAV_LIST,
   TABLE_HEADER_WIDTH,
   LOGIN_INPUT_INFO,
+  BOXOFFICE_BASE_URL,
 };
