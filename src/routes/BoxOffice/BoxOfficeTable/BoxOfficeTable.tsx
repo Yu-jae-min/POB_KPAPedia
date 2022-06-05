@@ -14,12 +14,14 @@ interface IBoxOfficeDataType {
 const BoxOfficeTable = ({ boxOfficeData }: IBoxOfficeDataType) => {
   const navigate = useNavigate();
 
+  const tableItem = boxOfficeData.slice(0, 30);
+
   const tableBody = useMemo(() => {
     const goToDetail = (mt20id: string) => {
       navigate(`/${mt20id}`);
     };
 
-    return boxOfficeData.map((item: IBoxOfficeListType) => {
+    return tableItem.map((item: IBoxOfficeListType) => {
       const { rnum, cate, prfnm, prfplcnm, prfpd, area, seatcnt, mt20id } = item;
 
       return (
