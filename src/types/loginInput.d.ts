@@ -8,4 +8,5 @@ export interface ILoginInputType {
   validationId: RegExp;
   validationPw: RegExp;
   handleUserInfo: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleLoginCheck: (event: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLElement>) => void;
 }

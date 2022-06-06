@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import store from 'store';
 
@@ -27,7 +27,9 @@ const Login = () => {
     setUserInfo(nextInput);
   };
 
-  const handleLoginCheck = () => {
+  const handleLoginCheck = (event: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+
     if (!btnActive) {
       setModalOpen(true);
       return;
@@ -57,6 +59,7 @@ const Login = () => {
         <LoginLogo className={styles.loginLogo} />
         <LoginInput
           handleUserInfo={handleUserInfo}
+          handleLoginCheck={handleLoginCheck}
           userInfo={userInfo}
           validationId={validationId}
           validationPw={validationPw}
