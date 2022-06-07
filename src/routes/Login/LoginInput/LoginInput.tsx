@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { ILoginInputType } from 'types/loginInput';
+import { ILoginInputType } from 'types/types';
 
 import styles from './loginInput.module.scss';
 
