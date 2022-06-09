@@ -24,7 +24,7 @@
 
 ## 🔧 **기술스택**
 
-- Typescript, React, SASS, react-query, recoil
+- Typescript, React, Sass, react-query, recoil
 
 <br />
 
