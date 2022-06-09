@@ -1,5 +1,11 @@
 # KPA Pedia
 
+공연 및 축제 정보를 확인하고 검색할 수 있습니다.
+
+<br />
+
+## 🎉 **배포 주소**
+
 - [https://kpa-pedia.netlify.app/](https://kpa-pedia.netlify.app/)
 
 <br />
