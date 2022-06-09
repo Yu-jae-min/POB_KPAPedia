@@ -33,7 +33,7 @@
 2. repository 클론
 
 ```
-git clone git@https://github.com/Yu-jae-min/POB_KPAPedia.git
+git clone https://github.com/Yu-jae-min/POB_KPAPedia.git
 ```
 
 3. dependencies 설치
